@@ -14,10 +14,7 @@ if echo "${VERSION}" | grep -Eq "^v[0-9]+(\.[0-9]+){2}$"; then
     git fetch --all
     git config user.email eks-bot@users.noreply.github.com
     git config user.name eks-bot
-    # Don't leak GITHUB_TOKEN
-    set +x
-    git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}
-    set -x
+    git remote set-url origin https://github.com/jaydeokar/eks-charts.git 
     git config pull.rebase false
     git checkout gh-pages
     mv -n $PACKAGE_DIR/stable/*.tgz .
